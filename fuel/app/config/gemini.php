@@ -6,7 +6,7 @@
 return array(
     // API Key của Google Gemini
     // Lấy API key từ: https://aistudio.google.com/app/apikey
-    'api_key' => 'AIzaSyD281nigAE2OP9d6cCkNU6VvQ3phgWBesg',
+    'api_key' => getenv('GEMINI_API_KEY'),
     
     // Model sử dụng (gemini-2.0-flash, gemini-1.5-pro, gemini-1.5-flash)
     'model' => 'gemini-2.0-flash',

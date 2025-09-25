@@ -13,6 +13,8 @@
 
 error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
 
+
+
 // Bootstrap the framework - THIS LINE NEEDS TO BE FIRST!
 require COREPATH.'bootstrap.php';
 
@@ -33,6 +35,24 @@ require COREPATH.'bootstrap.php';
  * Fuel::PRODUCTION
  */
 Fuel::$env = Arr::get($_SERVER, 'FUEL_ENV', Arr::get($_ENV, 'FUEL_ENV', getenv('FUEL_ENV') ?: Fuel::DEVELOPMENT));
+
+$envPath = APPPATH.'../../.env';
+if (is_file($envPath)) {
+    $lines = file($envPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos(ltrim($line), '#') === 0) continue;
+        $parts = explode('=', $line, 2);
+        if (count($parts) === 2) {
+            $key = trim($parts[0]);
+            $value = trim($parts[1]);
+            if ((substr($value,0,1)==='"' && substr($value,-1)==='"') || (substr($value,0,1)==="'" && substr($value,-1)==="'")) {
+                $value = substr($value, 1, -1);
+            }
+            putenv("{$key}={$value}");
+            $_ENV[$key] = $value;
+        }
+    }
+}
 
 // Initialize the framework with the config file.
 \Fuel::init('config.php');

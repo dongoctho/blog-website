@@ -14,8 +14,8 @@ use Fuel\Core\Uri;
 
 return array(
     // Google OAuth2 Settings
-    'client_id'     => '687034240198-82smvkuf5d48pc5otd7rbfr622f6ru4d.apps.googleusercontent.com',
-    'client_secret' => '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',
+    'client_id'     => getenv('GOOGLE_CLIENT_ID'),
+    'client_secret' => getenv('GOOGLE_CLIENT_SECRET'),
     'redirect_uri'  => Uri::base() . 'auth/google/callback',
     
     // OAuth2 Scopes

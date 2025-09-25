@@ -9,6 +9,7 @@
 build
 .idea
 nbproject/
+.env
 
 # hidden files created by Windows
 Thumbs.db
