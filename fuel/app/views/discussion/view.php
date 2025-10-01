@@ -130,12 +130,12 @@ use Fuel\Core\Input;
                                     <span id="cr-count-<?= (int)$c->id ?>" class="text-muted small"><?php echo $total_react; ?></span>
                                 </button>
                                 <div class="reaction-panel shadow-sm" id="cr-panel-<?= (int)$c->id ?>">
-                                    <button class="btn btn-light btn-sm icon-size" onclick="reactComment(<?= (int)$c->id ?>, 'like')"><i class="bi bi-hand-thumbs-up-fill"></i></button>
-                                    <button class="btn btn-light btn-sm icon-size" onclick="reactComment(<?= (int)$c->id ?>, 'love')">❤️</button>
-                                    <button class="btn btn-light btn-sm icon-size" onclick="reactComment(<?= (int)$c->id ?>, 'haha')">😆</button>
-                                    <button class="btn btn-light btn-sm icon-size" onclick="reactComment(<?= (int)$c->id ?>, 'wow')">😮</button>
-                                    <button class="btn btn-light btn-sm icon-size" onclick="reactComment(<?= (int)$c->id ?>, 'sad')">😢</button>
-                                    <button class="btn btn-light btn-sm icon-size" onclick="reactComment(<?= (int)$c->id ?>, 'angry')">😡</button>
+                                    <button class="btn btn-sm icon-size" onclick="reactComment(<?= (int)$c->id ?>, 'like')"><i class="bi bi-hand-thumbs-up-fill"></i></button>
+                                    <button class="btn btn-sm icon-size" onclick="reactComment(<?= (int)$c->id ?>, 'love')">❤️</button>
+                                    <button class="btn btn-sm icon-size" onclick="reactComment(<?= (int)$c->id ?>, 'haha')">😆</button>
+                                    <button class="btn btn-sm icon-size" onclick="reactComment(<?= (int)$c->id ?>, 'wow')">😮</button>
+                                    <button class="btn btn-sm icon-size" onclick="reactComment(<?= (int)$c->id ?>, 'sad')">😢</button>
+                                    <button class="btn btn-sm icon-size" onclick="reactComment(<?= (int)$c->id ?>, 'angry')">😡</button>
                                 </div>
                             </div>
                             <?php
@@ -249,6 +249,28 @@ use Fuel\Core\Input;
 /* Màu hồng cho icon Like để đồng nhất theme */
 .reaction-panel .btn .bi-hand-thumbs-up-fill { color: #e83e8c; }
 .reaction-main .bi-hand-thumbs-up-fill { color: #e83e8c; }
+
+/* Hiệu ứng hover cho các icon phản ứng - icon sẽ to ra khi di chuột qua */
+.reaction-panel .btn.icon-size {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1);
+}
+
+.reaction-panel .btn.icon-size:hover {
+    transform: scale(1.3);
+    z-index: 10;
+    position: relative;
+}
+
+/* Hiệu ứng hover cho icon chính */
+.reaction-main {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1);
+}
+
+.reaction-main:hover {
+    transform: scale(1.1);
+}
 </style>
 
 <!-- CKEditor Script -->

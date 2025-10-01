@@ -16,6 +16,14 @@
 	<meta property="og:image" content="<?php echo Uri::base(); ?>uploads/logo.png" />
 	
 	<style>
+		.nav-link {
+			color: white;
+		}
+
+		body {
+			padding-top: 70px;
+		}
+
 		.pagination {
 			display: flex;
 			gap: 8px;
@@ -77,6 +85,11 @@
 			backdrop-filter: blur(10px);
 			position: relative;
 			z-index: 2000;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			width: 100%;
 		}
 		
 		.navbar-brand {
@@ -777,7 +790,7 @@ use Fuel\Core\Fuel;
 	<nav class="navbar navbar-expand-lg navbar-dark">
 		<div class="container">
 			<a class="navbar-brand" href="<?php echo Uri::base(); ?>">
-				<i class="bi bi-newspaper"></i> Blog CMS
+				<i class="bi bi-bootstrap-fill"></i> Blog CMS
 			</a>
 			
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -793,7 +806,7 @@ use Fuel\Core\Fuel;
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="<?php echo Uri::create('discussion'); ?>">
-							<i class="bi bi-chat"></i> Thảo luận
+							<i class="bi bi-chat-fill"></i> Thảo luận
 						</a>
 					</li>
 				</ul>
@@ -903,7 +916,7 @@ $banner_ads_2 = [
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-					<h5><i class="bi bi-newspaper"></i> Blog CMS</h5>
+					<h5><i class="bi bi-bootstrap-fill"></i> Blog CMS</h5>
 					<p class="mb-0">Hệ thống quản lý blog được xây dựng bằng FuelPHP</p>
 				</div>
 				<div class="col-md-6 text-md-end">
@@ -919,14 +932,14 @@ $banner_ads_2 = [
 	</footer>
 
 	<!-- Chatbot Toggle Button -->
-	<button class="chatbot-toggle" id="chatbotToggle" title="Mở chatbot">
+	<button class="chatbot-toggle hidden" id="chatbotToggle" title="Mở chatbot">
 		<i class="bi bi-chat-dots"></i>
 	</button>
 
 	<!-- Chatbot Container -->
-	<div class="chatbot-container" id="chatbotContainer">
+	<div class="chatbot-container active" id="chatbotContainer">
 		<div class="chatbot-header">
-			<h6><i class="bi bi-robot"></i> Chatbot Hỗ trợ</h6>
+			<h6><i class="bi bi-robot"></i> ThoGPT</h6>
 			<button class="chatbot-close" id="chatbotClose" title="Đóng chatbot">
 				<i class="bi bi-x"></i>
 			</button>
@@ -934,7 +947,7 @@ $banner_ads_2 = [
 		
 		<div class="chatbot-messages" id="chatbotMessages">
 			<div class="chatbot-message bot">
-				Xin chào! Tôi là chatbot hỗ trợ của Blog CMS. Tôi có thể giúp gì cho bạn?
+				Xin chào! Tôi là ThoGPT. Tôi có thể giúp gì cho bạn?
 			</div>
 		</div>
 		
@@ -1120,16 +1133,6 @@ $banner_ads_2 = [
 			chatbotInput.addEventListener('keypress', function(e) {
 				if (e.key === 'Enter') {
 					sendMessage();
-				}
-			});
-			
-			// Đóng chatbot khi click bên ngoài
-			document.addEventListener('click', function(e) {
-				if (!chatbotContainer.contains(e.target) && !chatbotToggle.contains(e.target)) {
-					if (chatbotContainer.classList.contains('active')) {
-						chatbotContainer.classList.remove('active');
-						chatbotToggle.classList.remove('hidden');
-					}
 				}
 			});
 		});
